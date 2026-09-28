@@ -20,6 +20,8 @@ import PaymentMethods from './pages/PaymentMethods'
 import SendEmail from './pages/SendEmail'
 import DatabaseBackup from './pages/DatabaseBackup'
 import Enquiries from './pages/Enquiries'
+import Services from './pages/Services'
+import SuccessStoriesManage from './pages/SuccessStoriesManage'
 import Placeholder from './pages/Placeholder'
 
 function parseRoute() {
@@ -127,6 +129,8 @@ export default function App() {
     if (page === 'cms') return <Cms />
     if (page === 'activity') return <Activity tab={parts[1] || 'interests'} />
     if (page === 'enquiries') return <Enquiries />
+    if (page === 'services') return <Services />
+    if (page === 'success-stories') return <SuccessStoriesManage />
     if (page === 'settings') {
       const section = parts[1] === 'fields' ? 'basic' : parts[1] || 'basic'
       return <SiteSettings section={section} />

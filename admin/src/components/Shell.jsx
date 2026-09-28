@@ -16,6 +16,7 @@ import {
   Menu,
   X,
   MessageSquare,
+  Briefcase,
 } from 'lucide-react'
 import { NAV } from '../lib/nav'
 import { useAuth } from '../lib/auth'
@@ -30,6 +31,7 @@ const ICONS = {
   match: Heart,
   plans: CreditCard,
   approvals: BadgeCheck,
+  'website-content': Briefcase,
   enquiries: MessageSquare,
   activity: Activity,
   'email-templates': Mail,

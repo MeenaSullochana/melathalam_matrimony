@@ -1,14 +1,28 @@
 import { useEffect, useRef, useState } from 'react'
-import { services } from '../data/services'
+import { services as fallbackServices } from '../data/services'
+import { api, API_BASE, siteAssetUrl } from '../api'
 import './ServicesSection.css'
 
-export function ServicesGrid({ titleTag: TitleTag = 'h3' }) {
+function mapService(s, index) {
+  const image = s.image
+    ? siteAssetUrl(s.image) || `${API_BASE}/img/${String(s.image).replace(/^\//, '')}`
+    : fallbackServices[index % fallbackServices.length]?.image
+  return {
+    title: s.title || 'Service',
+    text: s.text || '',
+    image,
+    key: s.service_id || s.title || index,
+  }
+}
+
+export function ServicesGrid({ titleTag: TitleTag = 'h3', items }) {
+  const list = items?.length ? items : fallbackServices.map((s, i) => ({ ...s, key: s.title || i }))
   return (
     <div className="services__grid">
-      {services.map(({ title, text, image }, index) => (
-        <article className="service-card" key={title} style={{ '--card-i': index }}>
+      {list.map(({ title, text, image, key }, index) => (
+        <article className="service-card" key={key || title} style={{ '--card-i': index }}>
           <div className="service-card__image">
-            <img src={image} alt={title} loading="lazy" decoding="async" />
+            {image ? <img src={image} alt={title} loading="lazy" decoding="async" /> : null}
           </div>
           <div className="service-card__body">
             <TitleTag className="service-card__title">{title}</TitleTag>
@@ -23,6 +37,16 @@ export function ServicesGrid({ titleTag: TitleTag = 'h3' }) {
 export default function ServicesSection({ onNavigate }) {
   const sectionRef = useRef(null)
   const [visible, setVisible] = useState(false)
+  const [items, setItems] = useState(null)
+
+  useEffect(() => {
+    api('/api/public/services')
+      .then((d) => {
+        const mapped = (d.services || []).map(mapService)
+        if (mapped.length) setItems(mapped)
+      })
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
     const el = sectionRef.current
@@ -70,7 +94,7 @@ export default function ServicesSection({ onNavigate }) {
           </div>
         </div>
 
-        <ServicesGrid />
+        <ServicesGrid items={items} />
 
         <div className="services__footer">
           <button

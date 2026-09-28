@@ -78,6 +78,14 @@ export const NAV = [
     ],
   },
   {
+    id: 'website-content',
+    label: 'Website Content',
+    children: [
+      { id: 'services', label: 'Services', path: 'services' },
+      { id: 'success-stories-manage', label: 'Success Stories', path: 'success-stories' },
+    ],
+  },
+  {
     id: 'enquiries',
     label: 'Enquiries',
     children: [{ id: 'quick-enquiries', label: 'Quick Enquiries', path: 'enquiries' }],

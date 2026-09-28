@@ -1,10 +1,12 @@
-﻿import { Heart } from 'lucide-react'
+﻿import { useEffect, useState } from 'react'
+import { Heart } from 'lucide-react'
 import arunPriya from '../assets/success-stories/arun-priya.jpg'
 import karthikDivya from '../assets/success-stories/karthik-divya.jpg'
 import rahulSneha from '../assets/success-stories/rahul-sneha.jpg'
+import { api, API_BASE } from '../api'
 import './SuccessStories.css'
 
-const stories = [
+const fallbackStories = [
   {
     image: arunPriya,
     quote: 'We found each other through Melathalam Matrimony. Thank you for being a part of our journey!',
@@ -51,7 +53,26 @@ function StoryCard({ story }) {
 }
 
 export default function SuccessStories({ onNavigate }) {
-  const loop = [...stories, ...stories]
+  const [stories, setStories] = useState(fallbackStories)
+
+  useEffect(() => {
+    api('/api/public/success-stories')
+      .then((d) => {
+        const mapped = (d.stories || []).map((s, i) => ({
+          image: s.weddingphoto
+            ? `${API_BASE}/SuccessStory/${String(s.weddingphoto).replace(/^\//, '')}`
+            : fallbackStories[i % fallbackStories.length].image,
+          quote: s.successmessage || 'Happily married through our matrimony service.',
+          he: s.groomname || 'Groom',
+          she: s.bridename || 'Bride',
+          city: s.address || s.country || '',
+        }))
+        if (mapped.length) setStories(mapped)
+      })
+      .catch(() => {})
+  }, [])
+
+  const loop = stories.length === 1 ? [...stories, ...stories, ...stories] : [...stories, ...stories]
 
   return (
     <section className="stories" id="stories">
