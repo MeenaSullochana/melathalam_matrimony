@@ -16,14 +16,24 @@ export async function loadSiteDefaults() {
 
 export function siteAssetUrl(name) {
   if (!name) return null
-  if (String(name).startsWith('http')) return name
-  return `${API_BASE}/img/${String(name).replace(/^\//, '')}`
+  const raw = String(name).trim()
+  if (!raw || raw === '.' || raw === 'null' || raw === 'undefined') return null
+  if (raw.startsWith('http')) return raw
+  return `${API_BASE}/img/${raw.replace(/^\//, '').replace(/^\./, '')}`
 }
 
 /** Prefer uploaded site logo; falls back to bundled asset when provided. */
 export function resolveSiteLogo(config, fallback) {
   const fromConfig = siteAssetUrl(config?.logo)
   return fromConfig || fallback || null
+}
+
+export function resolveSiteFooterLogo(config, fallback) {
+  return siteAssetUrl(config?.logo_footer) || siteAssetUrl(config?.logo) || fallback || null
+}
+
+export function resolveEnquiryImage(config, fallback) {
+  return siteAssetUrl(config?.enquiry_image) || fallback || null
 }
 
 export function photoUrl(name, gender) {

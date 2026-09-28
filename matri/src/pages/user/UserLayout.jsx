@@ -66,7 +66,14 @@ export default function UserLayout({ currentPage, onNavigate, children }) {
       <aside className={`user-sidebar ${open ? 'user-sidebar--open' : ''}`}>
         <button type="button" className="user-sidebar__brand" onClick={() => go('dashboard')}>
           <span className="user-sidebar__logo-wrap">
-            <img src={logoSrc} alt="Melathalam Matrimony" className="user-sidebar__logo" />
+            <img
+              src={logoSrc}
+              alt="Melathalam Matrimony"
+              className="user-sidebar__logo"
+              onError={() => {
+                if (logoSrc !== brandLogo) setLogoSrc(brandLogo)
+              }}
+            />
           </span>
         </button>
 

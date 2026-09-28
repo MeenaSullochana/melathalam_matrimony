@@ -1,7 +1,8 @@
-﻿import { useMemo } from 'react'
+﻿import { useEffect, useMemo, useState } from 'react'
 import { Mail, MapPin, Phone, MessageCircle } from 'lucide-react'
 import InstagramGallery from './InstagramGallery'
 import footerLogo from '../assets/logo/footer.png'
+import { loadSiteDefaults, resolveSiteFooterLogo } from '../api'
 import { useT } from '../i18n/LanguageContext'
 import LanguageSwitcher from './LanguageSwitcher'
 import './Footer.css'
@@ -39,14 +40,29 @@ const socialLinks = [
 ]
 
 function BrandLogo() {
+  const [src, setSrc] = useState(footerLogo)
+
+  useEffect(() => {
+    let cancelled = false
+    loadSiteDefaults().then((config) => {
+      if (!cancelled) setSrc(resolveSiteFooterLogo(config, footerLogo))
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   return (
     <img
-      src={footerLogo}
+      src={src}
       alt="Melathalam Matrimony"
       className="logo-mark"
       width={300}
       height={72}
       decoding="async"
+      onError={() => {
+        if (src !== footerLogo) setSrc(footerLogo)
+      }}
     />
   )
 }

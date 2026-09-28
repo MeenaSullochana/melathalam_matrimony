@@ -103,7 +103,13 @@ export default function DownloadApp() {
               <div className="download__phone-notch" />
               <div className="download__phone-screen">
                 <div className="download__phone-brand">
-                  <img src={logoSrc} alt="Melathalam Matrimony" />
+                  <img
+                    src={logoSrc}
+                    alt="Melathalam Matrimony"
+                    onError={() => {
+                      if (logoSrc !== brandLogo) setLogoSrc(brandLogo)
+                    }}
+                  />
                 </div>
                 <div className="download__phone-card">
                   <span className="download__phone-avatar" />

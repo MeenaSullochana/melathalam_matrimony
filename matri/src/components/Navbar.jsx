@@ -53,6 +53,9 @@ function BrandLogo({ className = 'logo-mark' }) {
       width={280}
       height={64}
       decoding="async"
+      onError={() => {
+        if (src !== brandLogo) setSrc(brandLogo)
+      }}
     />
   )
 }

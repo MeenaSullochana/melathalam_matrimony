@@ -62,6 +62,7 @@ const SECTION_META = {
   analytics: { title: 'Analytics code', source: 'site', keys: ['google_analytics', 'header_code', 'footer_code'] },
   logo: { title: 'Favicon & logo', source: 'upload', fileKeys: ['favicon', 'logo', 'logo_footer'] },
   banner: { title: 'Home page banner', source: 'upload', fileKeys: ['banner_image'], textKeys: ['banner_title', 'banner_text', 'banner_link'] },
+  enquiry: { title: 'Enquiry popup image', source: 'upload', fileKeys: ['enquiry_image'] },
   watermark: { title: 'Photo watermark', source: 'upload', fileKeys: ['watermark_image'], textKeys: ['watermark_status', 'watermark_position'] },
   'profile-id': { title: 'Update profile ID prefix', source: 'site', keys: ['matri_prefix', 'matri_start_id'] },
   defaults: {

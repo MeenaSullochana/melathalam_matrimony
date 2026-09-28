@@ -2,7 +2,7 @@
 import { MessageSquareText, Phone, User, X } from 'lucide-react'
 import brandLogo from '../assets/logo/logo.png'
 import attarImage from '../assets/enquiry/enquiry-attar.png'
-import { api } from '../api'
+import { api, loadSiteDefaults, resolveEnquiryImage, resolveSiteLogo } from '../api'
 import './EnquiryPopup.css'
 
 const INITIAL = { name: '', phone: '', message: '' }
@@ -11,6 +11,20 @@ export default function EnquiryPopup({ open, onClose }) {
   const titleId = useId()
   const [form, setForm] = useState(INITIAL)
   const [sent, setSent] = useState(false)
+  const [logoSrc, setLogoSrc] = useState(brandLogo)
+  const [mediaSrc, setMediaSrc] = useState(attarImage)
+
+  useEffect(() => {
+    let cancelled = false
+    loadSiteDefaults().then((config) => {
+      if (cancelled) return
+      setLogoSrc(resolveSiteLogo(config, brandLogo))
+      setMediaSrc(resolveEnquiryImage(config, attarImage))
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   useEffect(() => {
     if (!open) return undefined
@@ -67,19 +81,29 @@ export default function EnquiryPopup({ open, onClose }) {
         </button>
 
         <div className="enquiry-popup__media" aria-hidden="true">
-          <img src={attarImage} alt="" className="enquiry-popup__photo" />
+          <img
+            src={mediaSrc}
+            alt=""
+            className="enquiry-popup__photo"
+            onError={() => {
+              if (mediaSrc !== attarImage) setMediaSrc(attarImage)
+            }}
+          />
           <div className="enquiry-popup__media-fade" />
           <p className="enquiry-popup__media-script">Find your forever</p>
         </div>
 
         <div className="enquiry-popup__panel">
           <img
-            src={brandLogo}
+            src={logoSrc}
             alt="Melathalam Matrimony"
             className="enquiry-popup__logo"
             width={220}
             height={50}
             decoding="async"
+            onError={() => {
+              if (logoSrc !== brandLogo) setLogoSrc(brandLogo)
+            }}
           />
 
           <h2 id={titleId} className="enquiry-popup__title">
@@ -104,51 +128,48 @@ export default function EnquiryPopup({ open, onClose }) {
               <label className="enquiry-popup__field">
                 <span className="enquiry-popup__label">Name</span>
                 <span className="enquiry-popup__control">
-                  <User size={16} strokeWidth={2} aria-hidden="true" />
+                  <User size={16} strokeWidth={1.9} aria-hidden="true" />
                   <input
                     type="text"
                     name="name"
                     placeholder="Your full name"
+                    required
                     value={form.name}
                     onChange={update('name')}
-                    required
                     autoComplete="name"
                   />
                 </span>
               </label>
-
               <label className="enquiry-popup__field">
                 <span className="enquiry-popup__label">Phone</span>
                 <span className="enquiry-popup__control">
-                  <Phone size={16} strokeWidth={2} aria-hidden="true" />
+                  <Phone size={16} strokeWidth={1.9} aria-hidden="true" />
                   <input
                     type="tel"
                     name="phone"
                     placeholder="+91 98765 43210"
+                    required
                     value={form.phone}
                     onChange={update('phone')}
-                    required
                     autoComplete="tel"
                     pattern="[0-9+\s\-()]{8,18}"
                   />
                 </span>
               </label>
-
               <label className="enquiry-popup__field">
                 <span className="enquiry-popup__label">Message</span>
                 <span className="enquiry-popup__control enquiry-popup__control--area">
-                  <MessageSquareText size={16} strokeWidth={2} aria-hidden="true" />
+                  <MessageSquareText size={16} strokeWidth={1.9} aria-hidden="true" />
                   <textarea
                     name="message"
+                    rows={4}
                     placeholder="Tell us how we can help…"
+                    required
                     value={form.message}
                     onChange={update('message')}
-                    required
-                    rows={3}
                   />
                 </span>
               </label>
-
               <button type="submit" className="btn btn-primary enquiry-popup__submit">
                 Submit Enquiry
               </button>
