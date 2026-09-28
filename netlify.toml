@@ -1,7 +1,9 @@
 [build]
-  base = "frontend"
   command = "npm run build"
   publish = "dist"
+
+[build.environment]
+  VITE_API_URL = "https://melathalam-backend.onrender.com"
 
 [[redirects]]
   from = "/admin/*"
