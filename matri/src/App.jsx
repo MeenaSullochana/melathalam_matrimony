@@ -107,7 +107,7 @@ export default function App() {
   if (page === 'services') content = <ServicesPage />
   else if (page === 'stories') content = <StoriesPage />
   else if (page === 'about') content = <About />
-  else if (page === 'membership') content = <Membership />
+  else if (page === 'membership') content = <Membership onNavigate={navigateTo} />
   else if (page === 'contact') content = <Contact />
   else if (page === 'login') content = <Login onNavigate={navigateTo} />
   else if (page === 'register') content = <Register onNavigate={navigateTo} />

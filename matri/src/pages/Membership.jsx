@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react'
 import { CalendarDays, Eye, Phone, Sparkles, Check } from 'lucide-react'
 import PageShell from '../components/PageShell'
 import { api } from '../api'
+import { useAuth } from '../auth'
+import { useT } from '../i18n/LanguageContext'
 import './Membership.css'
 
-export default function Membership() {
+export default function Membership({ onNavigate }) {
+  const t = useT()
+  const { isLoggedIn } = useAuth()
   const [packages, setPackages] = useState([])
 
   useEffect(() => {
@@ -12,6 +16,7 @@ export default function Membership() {
       .then((d) => {
         setPackages(
           (d.plans || []).map((p, i) => ({
+            id: p.plan_id || p._id || i,
             name: `${p.plan_name} Package`,
             price: Number(p.plan_amount).toLocaleString('en-IN'),
             duration: `${p.plan_duration} Days`,
@@ -25,11 +30,15 @@ export default function Membership() {
       .catch(() => setPackages([]))
   }, [])
 
+  const onPay = () => {
+    onNavigate?.(isLoggedIn ? 'upgrade' : 'login')
+  }
+
   return (
     <PageShell
-      eyebrow="Membership"
-      title="Package Details"
-      subtitle="Choose the plan that fits your journey. Every package includes verified matches and secure contact access."
+      eyebrow={t('membershipPage.eyebrow')}
+      title={t('membershipPage.title')}
+      subtitle={t('membershipPage.subtitle')}
     >
       <div className="page-grid page-grid--4 membership__grid">
         {!packages.length ? (
@@ -37,9 +46,9 @@ export default function Membership() {
             No membership packages available right now. Please check back soon.
           </p>
         ) : null}
-        {packages.map((pkg) => (
+        {packages.map((pkg, index) => (
           <article
-            key={pkg.name}
+            key={pkg.id || pkg.name}
             className={`page-card membership-card ${pkg.featured ? 'membership-card--featured' : ''}`}
           >
             {pkg.badge && <span className="membership-card__badge">{pkg.badge}</span>}
@@ -78,6 +87,14 @@ export default function Membership() {
                 <span>Priority support</span>
               </li>
             </ul>
+
+            <button
+              type="button"
+              className={`btn membership-card__pay ${index === 3 ? 'membership-card__pay--primary' : 'btn-outline'}`}
+              onClick={onPay}
+            >
+              Pay
+            </button>
           </article>
         ))}
       </div>

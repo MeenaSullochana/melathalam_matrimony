@@ -63,6 +63,11 @@ const SECTION_META = {
   logo: { title: 'Favicon & logo', source: 'upload', fileKeys: ['favicon', 'logo', 'logo_footer'] },
   banner: { title: 'Home page banner', source: 'upload', fileKeys: ['banner_image'], textKeys: ['banner_title', 'banner_text', 'banner_link'] },
   enquiry: { title: 'Enquiry popup image', source: 'upload', fileKeys: ['enquiry_image'] },
+  gallery: {
+    title: 'Gallery images (Instagram strip)',
+    source: 'upload',
+    fileKeys: ['gallery_image_1', 'gallery_image_2', 'gallery_image_3', 'gallery_pay_image'],
+  },
   watermark: { title: 'Photo watermark', source: 'upload', fileKeys: ['watermark_image'], textKeys: ['watermark_status', 'watermark_position'] },
   'profile-id': { title: 'Update profile ID prefix', source: 'site', keys: ['matri_prefix', 'matri_start_id'] },
   defaults: {
@@ -345,7 +350,18 @@ export default function SiteSettings({ section = 'basic' }) {
             {(meta.fileKeys || []).map((key) => (
               <FileField
                 key={key}
-                label={key.replace(/_/g, ' ')}
+                label={
+                  {
+                    gallery_image_1: 'Gallery image 1 (dynamic)',
+                    gallery_image_2: 'Gallery image 2 (dynamic)',
+                    gallery_image_3: 'Gallery image 3 (dynamic)',
+                    gallery_pay_image: 'Pay tile image (4th — opens payment / login)',
+                    enquiry_image: 'Enquiry popup banner',
+                    logo: 'Site logo',
+                    logo_footer: 'Footer logo',
+                    favicon: 'Favicon',
+                  }[key] || key.replace(/_/g, ' ')
+                }
                 name={key}
                 preview={data[key]}
                 file={files[key]}

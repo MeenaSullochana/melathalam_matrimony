@@ -17,6 +17,7 @@ export const NAV = [
       { id: 'site-logo', label: 'Favicon & Logo', path: 'settings/logo' },
       { id: 'site-banner', label: 'Home Page Banner', path: 'settings/banner' },
       { id: 'site-enquiry', label: 'Enquiry Popup Image', path: 'settings/enquiry' },
+      { id: 'site-gallery', label: 'Gallery Images', path: 'settings/gallery' },
       { id: 'site-watermark', label: 'Photo Watermark', path: 'settings/watermark' },
       { id: 'site-profile-id', label: 'Update Profile Id', path: 'settings/profile-id' },
       { id: 'site-defaults', label: 'Default Images & Gates', path: 'settings/defaults' },

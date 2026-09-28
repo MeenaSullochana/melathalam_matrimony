@@ -65,6 +65,37 @@
   overflow: hidden;
   display: block;
   background: #2a1218;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.ig-gallery__item--pay .ig-gallery__overlay {
+  background: rgba(26, 10, 16, 0.45);
+  opacity: 1;
+}
+
+.ig-gallery__pay-badge {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 72px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #c9a227, #e8c547);
+  color: #3a1a12;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.ig-gallery__item--pay:hover .ig-gallery__pay-badge {
+  transform: translate(-50%, -50%) scale(1.06);
 }
 
 .ig-gallery__item img {

@@ -100,6 +100,21 @@
   font-weight: 700;
 }
 
+.membership-card__pay {
+  width: 100%;
+  margin-top: auto;
+}
+
+.membership-card__pay--primary {
+  background: var(--burgundy);
+  color: #fff;
+  border: none;
+}
+
+.membership-card__pay--primary:hover {
+  filter: brightness(1.06);
+}
+
 .membership-card__btn {
   width: 100%;
 }

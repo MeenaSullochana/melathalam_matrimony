@@ -149,7 +149,7 @@ export default function Footer({ onNavigate }) {
 
   return (
     <footer className="site-footer">
-      <InstagramGallery />
+      <InstagramGallery onNavigate={onNavigate} />
       <div className="site-footer__glow" aria-hidden="true" />
       <div className="container site-footer__inner">
         <div className="site-footer__col site-footer__col--about">
