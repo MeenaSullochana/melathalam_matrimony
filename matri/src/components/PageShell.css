@@ -1,0 +1,119 @@
+.page-shell {
+  min-height: calc(100vh - var(--header-h));
+  background:
+    radial-gradient(ellipse 80% 50% at 10% 0%, rgba(252, 236, 239, 0.9), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 90% 10%, rgba(247, 228, 233, 0.7), transparent 50%),
+    linear-gradient(180deg, #fff8f5 0%, var(--cream) 40%, #f3eeeb 100%);
+}
+
+.page-shell__hero {
+  padding: 48px 0 28px;
+  text-align: center;
+}
+
+.page-shell__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 10px;
+  opacity: 0.85;
+}
+
+.page-shell__title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: var(--ruby);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.page-shell__subtitle {
+  font-size: 15px;
+  color: var(--navy-soft);
+  max-width: 540px;
+  margin-inline: auto;
+  line-height: 1.65;
+}
+
+.page-shell__divider {
+  margin-top: 18px;
+}
+
+.page-shell__body {
+  padding-bottom: 64px;
+}
+
+.page-shell__body--narrow {
+  max-width: 480px;
+  width: min(100% - 40px, 480px);
+}
+
+.page-shell__body--medium {
+  max-width: 640px;
+  width: min(100% - 40px, 640px);
+}
+
+.page-card {
+  background: var(--white);
+  border: 1px solid rgba(38, 50, 56, 0.06);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.page-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.page-card--static:hover {
+  transform: none;
+  box-shadow: var(--shadow-soft);
+}
+
+.page-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.page-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.page-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.page-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .page-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-grid--3 {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-shell__hero {
+    padding: 36px 0 20px;
+  }
+
+  .page-grid--2,
+  .page-grid--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell__body {
+    padding-bottom: 48px;
+  }
+}

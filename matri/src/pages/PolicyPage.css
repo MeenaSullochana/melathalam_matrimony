@@ -1,0 +1,14 @@
+.policy-page {
+  padding: 28px 24px;
+}
+
+.policy-page p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--navy-soft);
+  margin-bottom: 16px;
+}
+
+.policy-page p:last-child {
+  margin-bottom: 0;
+}

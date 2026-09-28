@@ -1,0 +1,40 @@
+.stories-page__card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.stories-page__photo {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+}
+
+.stories-page__body {
+  padding: 20px 18px 22px;
+  position: relative;
+}
+
+.stories-page__quote {
+  font-size: 14px;
+  color: var(--navy-soft);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.stories-page__names {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ruby);
+  margin-bottom: 2px;
+}
+
+.stories-page__city {
+  font-size: 12px;
+  color: var(--text-muted);
+}

@@ -1,0 +1,204 @@
+:root {
+  /* Three-color palette: green + red + gold */
+  --burgundy: #40a404;
+  --burgundy-dark: #2e7a03;
+  --burgundy-mid: #4ebd05;
+  --burgundy-deep: #1f5602;
+  --burgundy-rgb: 64, 164, 4;
+  --gold: #e5a52f;
+  --gold-light: #f0c66a;
+  --gold-dark: #b37d16;
+  --gold-rgb: 229, 165, 47;
+  --ruby: #c41e1e;
+  --ruby-mid: #e03535;
+  --ruby-dark: #8b1414;
+  --ruby-rgb: 196, 30, 30;
+  --champagne: #f8f6ec;
+  --navy: #142016;
+  --navy-soft: #4d5a50;
+  --text-muted: #6b756e;
+  --white: #ffffff;
+  --cream: #f7f8f3;
+  --cream-warm: #eef2e8;
+  --pink: #fdecea;
+  --pink-soft: #f8ddd9;
+  --blush: #fce8e4;
+  --border: #d6ddd2;
+  --border-light: #e8eee5;
+  --shadow: 0 10px 30px rgba(20, 32, 22, 0.1);
+  --shadow-soft: 0 4px 16px rgba(20, 32, 22, 0.06);
+  --shadow-hover: 0 12px 28px rgba(var(--burgundy-rgb), 0.14);
+  --radius: 10px;
+  --radius-sm: 8px;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Montserrat', 'Segoe UI', sans-serif;
+  --font-script: 'Great Vibes', cursive;
+  --header-h: 84px;
+  --container: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--navy);
+  background: var(--cream);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+select,
+input {
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: min(100% - 40px, var(--container));
+  margin-inline: auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.15s ease, border-color 0.2s ease;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, var(--burgundy-mid) 0%, var(--burgundy) 100%);
+  color: var(--white);
+  border-color: var(--burgundy);
+  padding: 10px 20px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+  border-color: var(--burgundy-dark);
+  box-shadow: 0 6px 16px rgba(var(--burgundy-rgb), 0.28);
+}
+
+.btn-outline {
+  background: var(--white);
+  color: var(--ruby);
+  border-color: var(--gold);
+  padding: 9px 18px;
+}
+
+.btn-outline:hover {
+  background: var(--ruby);
+  color: var(--white);
+  border-color: var(--ruby-dark);
+}
+
+.btn-login {
+  background: var(--ruby);
+  border-color: var(--ruby);
+  color: var(--white);
+  padding: 9px 18px;
+  gap: 6px;
+}
+
+.btn-login:hover {
+  background: var(--ruby-dark);
+  border-color: var(--ruby-dark);
+  color: var(--white);
+  box-shadow: 0 6px 16px rgba(var(--ruby-rgb), 0.28);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  color: var(--ruby);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* All page / section titles use red */
+.hero__title,
+.how__title,
+.why__title,
+.why-card__title,
+.safety__title,
+.safety-card__title,
+.cta__title,
+.stories__title,
+.communities__title,
+.page-shell__title,
+.trust__title,
+.user-panel__title,
+.user-topbar__title,
+.profile-subsection__title,
+.matches-search__title,
+.dash-activity__title {
+  color: var(--ruby);
+}
+
+.floral-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px auto 0;
+  width: min(280px, 70%);
+  color: var(--gold);
+}
+
+.floral-divider::before,
+.floral-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+  opacity: 0.75;
+}
+
+.floral-divider::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.floral-divider svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 28px, var(--container));
+  }
+}

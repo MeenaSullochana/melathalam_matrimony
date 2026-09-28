@@ -1,0 +1,111 @@
+.membership__grid {
+  align-items: stretch;
+}
+
+.membership-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 22px 24px;
+  overflow: hidden;
+}
+
+.membership-card--featured {
+  border-color: rgba(var(--burgundy-rgb), 0.28);
+  background: linear-gradient(180deg, #fff 0%, var(--champagne) 100%);
+  box-shadow: 0 12px 32px rgba(var(--burgundy-rgb), 0.12);
+}
+
+.membership-card__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--burgundy);
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+
+.membership-card__top {
+  text-align: center;
+  margin-bottom: 22px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(38, 50, 56, 0.06);
+}
+
+.membership-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--burgundy);
+  background: var(--pink);
+  margin-bottom: 12px;
+}
+
+.membership-card__name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ruby);
+  margin-bottom: 10px;
+}
+
+.membership-card__price {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--ruby);
+  line-height: 1;
+}
+
+.membership-card__currency {
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 4px;
+  vertical-align: super;
+}
+
+.membership-card__features {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.membership-card__features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--navy-soft);
+  line-height: 1.4;
+}
+
+.membership-card__features li svg {
+  color: var(--burgundy);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.membership-card__features strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.membership-card__btn {
+  width: 100%;
+}
+
+@media (max-width: 1100px) and (min-width: 721px) {
+  .membership__grid.page-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

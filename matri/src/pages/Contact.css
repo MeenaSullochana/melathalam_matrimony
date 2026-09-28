@@ -1,0 +1,125 @@
+.contact__details {
+  margin-bottom: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.contact__detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 26px 20px;
+  color: inherit;
+}
+
+.contact__value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  word-break: break-word;
+}
+
+.contact__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--burgundy);
+  color: var(--burgundy);
+  background: rgba(252, 236, 239, 0.65);
+  margin-bottom: 12px;
+}
+
+.contact__label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.contact__form {
+  padding: 32px 28px;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.contact__form-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ruby);
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.contact__fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.contact__field--full {
+  grid-column: 1 / -1;
+}
+
+.contact__field input,
+.contact__field textarea {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--navy);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  resize: vertical;
+}
+
+.contact__field input:focus,
+.contact__field textarea:focus {
+  border-color: var(--burgundy);
+  box-shadow: 0 0 0 3px rgba(var(--burgundy-rgb), 0.1);
+}
+
+.contact__submit {
+  width: 100%;
+  padding: 12px 20px;
+}
+
+.contact__status {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+
+.contact__status--ok {
+  color: #067647;
+}
+
+.contact__status--err {
+  color: #b42318;
+}
+
+@media (max-width: 640px) {
+  .contact__fields {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__form {
+    padding: 24px 18px;
+  }
+}

@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    @apply h-full;
+  }
+  body {
+    @apply overflow-hidden bg-admin-mesh font-sans text-ink-900 antialiased;
+  }
+  ::selection {
+    @apply bg-brand-200/80 text-brand-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-45;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-b from-brand-600 to-brand-700 text-white shadow-sm hover:from-brand-500 hover:to-brand-700;
+  }
+  .btn-secondary {
+    @apply btn border border-ink-200 bg-white text-ink-800 shadow-sm hover:border-ink-300 hover:bg-ink-50;
+  }
+  .btn-ghost {
+    @apply btn border border-transparent text-ink-700 hover:bg-ink-100;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700;
+  }
+  .btn-ok {
+    @apply btn bg-emerald-600 text-white hover:bg-emerald-700;
+  }
+  .btn-accent {
+    @apply btn bg-accent-500 text-ink-950 hover:bg-accent-600;
+  }
+  .card {
+    @apply rounded-2xl border border-ink-200/80 bg-white/95 shadow-premium backdrop-blur;
+  }
+  .input {
+    @apply w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm outline-none transition placeholder:text-ink-500/70 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20;
+  }
+  .label {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-500;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .badge-ok {
+    @apply badge border-emerald-200 bg-emerald-50 text-emerald-700;
+  }
+  .badge-warn {
+    @apply badge border-amber-200 bg-amber-50 text-amber-800;
+  }
+  .badge-muted {
+    @apply badge border-ink-200 bg-ink-100 text-ink-700;
+  }
+  .table-wrap {
+    @apply overflow-auto;
+  }
+  .data-table {
+    @apply w-full min-w-[720px] text-left text-sm;
+  }
+  .data-table thead {
+    @apply sticky top-0 z-10 bg-ink-950 text-white;
+  }
+  .data-table th {
+    @apply whitespace-nowrap border-b border-ink-800 px-3 py-3.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-white/75;
+  }
+  .data-table td {
+    @apply border-b border-ink-100 px-3 py-3 align-middle text-ink-800;
+  }
+  .data-table--dense td,
+  .data-table--dense th {
+    @apply py-2;
+  }
+  .page-kicker {
+    @apply text-[11px] font-semibold uppercase tracking-[0.16em] text-accent-600;
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .no-print,
+  .print\:hidden,
+  aside,
+  header,
+  nav,
+  .admin-chrome {
+    display: none !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+  .print-area,
+  .print-area *,
+  .bd-sheet,
+  .bd-sheet * {
+    visibility: visible !important;
+  }
+  .print-area {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .card,
+  .shadow-card,
+  .shadow-premium {
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .bd-sheet {
+    box-shadow: none !important;
+    margin: 0 !important;
+    page-break-inside: auto;
+  }
+
+  .bd-sheet img {
+    max-width: 220px !important;
+    max-height: 220px !important;
+    object-fit: contain !important;
+  }
+
+  .bd-charts {
+    page-break-inside: avoid;
+  }
+
+  button {
+    display: none !important;
+  }
+}

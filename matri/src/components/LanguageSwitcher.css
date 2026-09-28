@@ -1,0 +1,71 @@
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.lang-switch__btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  line-height: 1;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.lang-switch__btn:hover {
+  color: #fff;
+}
+
+.lang-switch__btn.is-active {
+  background: #fff;
+  color: var(--burgundy, #7a1f2b);
+}
+
+.lang-switch--compact {
+  background: rgba(122, 31, 43, 0.08);
+  border-color: rgba(122, 31, 43, 0.16);
+}
+
+.lang-switch--compact .lang-switch__btn {
+  color: rgba(122, 31, 43, 0.72);
+  padding: 5px 8px;
+  font-size: 11px;
+}
+
+.lang-switch--compact .lang-switch__btn.is-active {
+  background: var(--burgundy, #7a1f2b);
+  color: #fff;
+}
+
+.navbar .lang-switch {
+  margin-left: 6px;
+}
+
+.user-sidebar .lang-switch {
+  margin: 0 0 14px;
+  width: 100%;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.user-sidebar .lang-switch__btn {
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .navbar__actions .lang-switch {
+    order: -1;
+  }
+}
